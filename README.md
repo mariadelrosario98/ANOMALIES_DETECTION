@@ -26,14 +26,47 @@ To address this, we explore both:
 The goal is to evaluate both approaches and understand their effectiveness in accurately flagging fraudulent transactions while minimizing false alarms.
 
 ## 🚀 Models
-### 🔹 Isolation Forest (Unsupervised)
-- Learns to isolate observations in the feature space
-- Flags observations that are "easier to isolate" as anomalies
-- Does **not** use the `Class` label for training
 
-### 🔸 Random Forest (Supervised)
-- Uses historical labels to learn patterns of fraud
-- Standard classification algorithm with high interpretability
+### 🕵️‍♂️ Isolation Forest (Unsupervised Learning)
+
+**Isolation Forest** is designed for **anomaly detection**. Instead of profiling normal data, it isolates anomalies based on the idea that they are **easier to separate** from the rest of the data.
+
+#### 🔍 How it works:
+1. Builds an ensemble of **isolation trees**, where:
+   - Each tree splits data randomly on a selected feature and split value.
+2. Anomalies are expected to be **isolated in fewer splits** (shorter path lengths).
+3. The **average path length** across trees is used to calculate an **anomaly score**.
+
+#### ⚙️ Key Parameters:
+| Parameter              | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| `n_estimators`         | Number of isolation trees to build                                          |
+| `max_samples`          | Number of samples to draw from the dataset to train each tree               |
+| `contamination`        | Expected proportion of outliers (used to define the decision threshold)     |
+| `max_features`         | Number of features to draw when training each tree                          |
+| `bootstrap`            | Whether to bootstrap samples when building trees                            |
+| `random_state`         | Controls randomness and reproducibility                                     |
+
+---
+
+**🌳 Random Forest** is an ensemble classification and regression algorithm that builds multiple decision trees and combines their outputs to improve accuracy and reduce overfitting.
+
+#### 🔍 How it works:
+1. Creates multiple decision trees using **bootstrapped subsets** of the training data.
+2. At each node, selects a **random subset of features** to split on.
+3. **Aggregates predictions** (majority vote for classification, average for regression).
+
+#### ⚙️ Key Parameters:
+| Parameter              | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| `n_estimators`         | Number of trees in the forest                                               |
+| `max_depth`            | Maximum depth of each tree                                                  |
+| `max_features`         | Number of features to consider when looking for the best split              |
+| `min_samples_split`    | Minimum number of samples required to split a node                          |
+| `min_samples_leaf`     | Minimum number of samples required to be at a leaf node                     |
+| `class_weight`         | How to handle class imbalance (e.g., `'balanced'`)                          |
+| `random_state`         | Controls reproducibility of results                                         |
+
 
 ## 📊 Results
 ### ✅ Confusion Matrix: Isolation Forest
