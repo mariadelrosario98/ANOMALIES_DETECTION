@@ -1,4 +1,4 @@
-## 📌 Problem Description: Anomaly Detection in Credit Card Transactions
+## 🕵️ Problem Description: Anomaly Detection in Credit Card Transactions
 
 In the domain of financial services, one of the most critical challenges is the detection of fraudulent credit card transactions. Fraudulent transactions represent a small fraction of all operations, yet they can lead to significant financial losses and security breaches.
 
