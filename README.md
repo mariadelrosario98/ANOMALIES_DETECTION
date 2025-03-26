@@ -22,29 +22,20 @@ To address this, we explore both:
 
 2. Supervised methods like Random Forest, which leverage labeled historical data to learn patterns of fraud
 
----
 ## 📌 Objective
-
-**The goal is to evaluate both approaches and understand their effectiveness in accurately flagging fraudulent transactions while minimizing false alarms.
-**---
+The goal is to evaluate both approaches and understand their effectiveness in accurately flagging fraudulent transactions while minimizing false alarms.
 
 ## 🚀 Models
-
 ### 🔹 Isolation Forest (Unsupervised)
-
 - Learns to isolate observations in the feature space
 - Flags observations that are "easier to isolate" as anomalies
 - Does **not** use the `Class` label for training
 
 ### 🔸 Random Forest (Supervised)
-
 - Uses historical labels to learn patterns of fraud
 - Standard classification algorithm with high interpretability
 
----
-
 ## 📊 Results
-
 ### ✅ Confusion Matrix: Isolation Forest
 
 |                | Predicted: 0 | Predicted: 1 | Notes              |
@@ -90,7 +81,6 @@ To address this, we explore both:
 ---
 
 ## ✅ Conclusion
-
 - **Random Forest** significantly outperforms Isolation Forest in this case, thanks to access to labeled data.
 - It achieves **high precision and recall**, making it ideal for production fraud detection pipelines.
 - **Isolation Forest**, while unsupervised, still manages to catch most anomalies and is a valuable tool when labels are unavailable.
